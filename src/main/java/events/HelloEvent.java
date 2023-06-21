@@ -14,7 +14,7 @@ public class HelloEvent extends ListenerAdapter {
                 break;
             }
             if(i.equalsIgnoreCase("hello")){
-                event.getChannel().sendMessage("funny, " + userName).queue();
+                event.getChannel().sendMessage("very funny, " + userName).queue();
                 break;
             }
         }
