@@ -5,7 +5,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import java.util.Objects;
 
-public class helloEvent extends ListenerAdapter {
+public class HelloEvent extends ListenerAdapter {
     public void onMessageReceived(MessageReceivedEvent event){
         String[] messageSent = event.getMessage().getContentRaw().split(" ");
         String userName = Objects.requireNonNull(event.getMember()).getUser().getEffectiveName();

@@ -1,4 +1,5 @@
-import events.helloEvent;
+import commands.Calculator;
+import events.HelloEvent;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
@@ -28,7 +29,8 @@ public class discordBot {
             System.out.println("File was not found");
             System.exit(-1);
         }
-        bot.addEventListener(new helloEvent());
+        bot.addEventListener(new HelloEvent());
+        bot.addEventListener(new Calculator());
 
     }
 }
