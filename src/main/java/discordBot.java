@@ -12,21 +12,23 @@ import java.util.Scanner;
 public class discordBot {
 
     public static void main(String[] args) throws LoginException {
-        String token;
-        try{
+        JDA bot = null;
+        try {
 
             Scanner scanner = new Scanner(new File("src/main/java/token.txt"));
-            token = scanner.nextLine();
+            String token = scanner.nextLine();
             scanner.close();
-            JDA bot = JDABuilder.createLight(token, GatewayIntent.GUILD_MESSAGES, GatewayIntent.MESSAGE_CONTENT, GatewayIntent.GUILD_MEMBERS)
+            bot = JDABuilder.createLight(token, GatewayIntent.GUILD_MESSAGES, GatewayIntent.MESSAGE_CONTENT, GatewayIntent.GUILD_MEMBERS)
                     .enableIntents(GatewayIntent.GUILD_MESSAGES)
                     .setActivity(Activity.playing("intelliJ"))
                     .build();
 
-            bot.addEventListener(new helloEvent());
-        }catch (FileNotFoundException e) {
+
+        } catch (FileNotFoundException e) {
             System.out.println("File was not found");
+            System.exit(-1);
         }
+        bot.addEventListener(new helloEvent());
 
     }
 }
