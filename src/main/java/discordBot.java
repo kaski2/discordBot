@@ -3,6 +3,8 @@ import events.HelloEvent;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.interactions.commands.OptionType;
+import net.dv8tion.jda.api.interactions.commands.build.Commands;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 
 import javax.security.auth.login.LoginException;
@@ -29,8 +31,17 @@ public class discordBot {
             System.out.println("File was not found");
             System.exit(-1);
         }
+
+        bot.updateCommands().addCommands(
+                // these are not required?? figure out how to make them mandatory
+                Commands.slash("calculate", "Does a simple calculation for you.")
+                        .addOption(OptionType.INTEGER, "number", "The first number")
+                        .addOption(OptionType.STRING, "operator", "choose what operation you want: +, -")
+                        .addOption(OptionType.INTEGER, "number2", "Second number")
+        ).queue();
         bot.addEventListener(new HelloEvent());
         bot.addEventListener(new Calculator());
+
 
     }
 }
